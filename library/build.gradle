@@ -1,0 +1,75 @@
+apply plugin: 'java'
+//apply plugin: 'com.github.dcendents.android-maven'
+//apply plugin: 'com.jfrog.bintray'
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compileOnly 'com.google.android:android:4.1.1.4'
+}
+targetCompatibility = '1.7'
+sourceCompatibility = '1.7'
+//version = "0.0.2"
+//def siteUrl = 'https://github.com/iamyours/RAdapter/tree/master/lib'      // 项目的主页
+//def gitUrl = 'https://github.com/iamyours/RAdapter.git'
+//group = "io.github.iamyours"
+//
+//install {
+//    repositories.mavenInstaller {
+//        // This generates POM.xml with proper parameters
+//        pom {
+//            project {
+//                packaging 'jar'
+//                // Add your description here
+//                name 'Android ListView/RecyclerView Adapter lib' 	//项目描述
+//                url siteUrl
+//                // Set your license
+//                licenses {
+//                    license {
+//                        name 'The Apache Software License, Version 2.0'
+//                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+//                    }
+//                }
+//                developers {
+//                    developer {
+//                        id 'RogerYan'		//填写的一些基本信息
+//                        name 'Roger'
+//                        email 'yan127422@163.com'
+//                    }
+//                }
+//                scm {
+//                    connection gitUrl
+//                    developerConnection gitUrl
+//                    url siteUrl
+//                }
+//            }
+//        }
+//    }
+//}
+//task sourcesJar(type: Jar, dependsOn:classes) {
+//    classifier = 'sources'
+//    from sourceSets.main.allSource
+//}
+//
+//task javadocJar(type: Jar, dependsOn:javadoc) {
+//    classifier = 'javadoc'
+//    from javadoc.destinationDir
+//}
+//
+//artifacts {
+//    archives sourcesJar
+//    archives javadocJar
+//}
+//Properties properties = new Properties()
+//properties.load(project.rootProject.file('local.properties').newDataInputStream())
+//bintray {
+//    user = "iamyours"
+//    key = "xxx"
+//    configurations = ['archives']
+//    pkg {
+//        repo = "maven"
+//        name = "radapter-lib"	//发布到JCenter上的项目名字
+//        websiteUrl = siteUrl
+//        vcsUrl = gitUrl
+//        licenses = ["Apache-2.0"]
+//        publish = true
+//    }
+//}
