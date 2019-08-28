@@ -2,20 +2,10 @@ package io.github.iamyours.aarouter;
 
 import android.content.Context;
 
-import java.io.File;
-import java.io.IOException;
 import java.lang.ref.WeakReference;
-import java.lang.reflect.Field;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import dalvik.system.BaseDexClassLoader;
-import dalvik.system.DexFile;
 
 public class ARouter {
     private Map<String, String> routes = new HashMap<>();
@@ -26,8 +16,8 @@ public class ARouter {
         contextRef = new WeakReference<>(context);
         try {
             Set<String> names = ClassUtils.getFileNameByPackageName(context,ROUTES_PACKAGE_NAME);
-            System.out.println(names);
-        } catch (IOException e) {
+            initRoutes(names);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -35,6 +25,17 @@ public class ARouter {
 
     }
 
+    //通过反射初始化路由
+    private void initRoutes(Set<String> names) throws ClassNotFoundException, IllegalAccessException, InstantiationException {
+        for(String name:names){
+            Class clazz = Class.forName(name);
+            Object obj = clazz.newInstance();
+            if(obj instanceof IRoute){
+                IRoute route = (IRoute) obj;
+                route.loadInto(routes);
+            }
+        }
+    }
 
 
 
